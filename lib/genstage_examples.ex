@@ -4,9 +4,9 @@ defmodule GenstageExamples do
   alias GenstageExamples.Backpressure
 
   @doc"""
-          producer
+          Producer
              |
-          consumer
+          Consumer
   """
   def basic_ex do
     # Start all the GenStages.
@@ -17,11 +17,11 @@ defmodule GenstageExamples do
   end
 
   @doc"""
-          part_prod
+          PartitionProducer
           /       \
-       a_cons   bcast_prod_cons
-                  /     \
-              b_cons    c_cons
+       AConsumer   BroadcasterProducerConsumer
+                  /        \
+              BConsumer    CConsumer
   """
   def partition_ex do
     # Start all the GenStages.
@@ -46,11 +46,11 @@ defmodule GenstageExamples do
   end
 
   @doc"""
-          part_prod
+          PartitionProducer
           /       \
-    rate_limiter   bcast_prod_cons
-        /         /     \
-    a_cons   b_cons    c_cons
+    RateLimiter   BroadcasterProducerConsumer
+        /         /         \
+    AConsumer   BConsumer    CConsumer
   """
   def backpressure_ex do
     # Start all the GenStages.
